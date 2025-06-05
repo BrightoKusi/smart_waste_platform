@@ -62,6 +62,26 @@ services:
         condition: service_healthy
     environment:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    command: python simulate_bin_data.py
+
+  consumer:
+    build: ./simulator
+    depends_on:
+      kafka:
+        condition: service_healthy
+    env_file:
+      - .env
+    command: python consume_bin_data.py
+
+
+  bin_alert_processor:
+    build: ./simulator
+    depends_on:
+      kafka:
+        condition: service_healthy
+    env_file:
+      - .env
+    command: python bin_alert_processor.py
 
   postgres:
     image: postgres:15
@@ -70,7 +90,7 @@ services:
       POSTGRES_DB: smart_waste
       POSTGRES_USER: waste_user
       POSTGRES_PASSWORD: waste_pass
-      POSTGRES_HOST_AUTH_METHOD: md5  # ← THIS IS CRUCIAL
+      POSTGRES_HOST_AUTH_METHOD: md5 
     ports:
       - "5432:5432"
     volumes:

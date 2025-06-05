@@ -5,6 +5,6 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY simulate_bin_data.py .
+COPY . .
 
 CMD ["python", "simulate_bin_data.py"]
