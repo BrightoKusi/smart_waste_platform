@@ -1,10 +1,13 @@
-# consume_bin_data.py
 import json
 import logging
-from kafka import KafkaConsumer
+import os
 import psycopg2
+from kafka import KafkaConsumer
 from psycopg2 import pool, errors
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configure logging
 logging.basicConfig(
@@ -17,16 +20,17 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 class DatabaseManager:
     def __init__(self):
         self.connection_pool = pool.SimpleConnectionPool(
             minconn=1,
             maxconn=10,
-            dbname="smart_waste",
-            user="waste_user",
-            password="waste_pass",
-            host="localhost",  # Using Docker service name
-            port="5432"
+            dbname=os.getenv("POSTGRES_DB"),
+            user=os.getenv("POSTGRES_USER"),
+            password=os.getenv("POSTGRES_PASSWORD"),
+            host=os.getenv("POSTGRES_HOST"),
+            port=os.getenv("POSTGRES_PORT")
         )
         self.initialize_schema()
 
@@ -104,7 +108,7 @@ class KafkaMessageConsumer:
     def __init__(self):
         self.consumer = KafkaConsumer(
             "bin_status",
-            bootstrap_servers="localhost:29092",  # Docker service name
+            bootstrap_servers="kafka:9092",  # Docker service name
             auto_offset_reset="earliest",
             enable_auto_commit=True,
             group_id="bin-status-group",

@@ -1,10 +1,10 @@
 import json
 import smtplib
+import os
+import logging
 from email.mime.text import MIMEText
 from kafka import KafkaConsumer
-import logging
 from datetime import datetime
-import os
 from dotenv import load_dotenv
 
 load_dotenv()
