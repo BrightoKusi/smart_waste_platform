@@ -1,13 +1,20 @@
-from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import viewsets, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import BinStatus, BinAlerts
 from .serializers import BinStatusSerializer, BinAlertsSerializer
 
-# Create your views here.
-class BinStatusList(generics.ListAPIView):
-    queryset = BinStatus.objects.all().order_by('-timestamp')[:100]
+class BinStatusViewSet(viewsets.ModelViewSet):
+    queryset = BinStatus.objects.all().order_by('-timestamp')
     serializer_class = BinStatusSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['status', 'bin_id']
+    search_fields = ['bin_id', 'status']
+    ordering_fields = ['timestamp', 'fill_level', 'temperature']
 
-class BinAlertsList(generics.ListAPIView):
-    queryset = BinAlerts.objects.all().order_by('-timestamp')[:100]
+class BinAlertsViewSet(viewsets.ModelViewSet):
+    queryset = BinAlerts.objects.all().order_by('-timestamp')
     serializer_class = BinAlertsSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['bin_id']
+    search_fields = ['alert', 'bin_id']
+    ordering_fields = ['timestamp']
