@@ -100,6 +100,25 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+  
+  django:
+    build: ./smart_waste_ui
+    container_name: django_app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./smart_waste_ui:/app 
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_NAME: smart_waste
+      DB_USER: waste_user
+      DB_PASSWORD: waste_pass
+      DB_HOST: postgres
+      DB_PORT: 5432
+    
 
 volumes:
   postgres_data:
