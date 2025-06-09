@@ -1,10 +1,9 @@
 # **Smart Waste Management Platform**
 
-### 🖼️ Dashboard Preview
-
-![Dashboard](homepage-smart-waste.png)
-
 A Django-based web application for monitoring and managing smart waste bins. The platform collects, processes, and displays data related to waste bin status, alerts, and sensor information to optimize waste collection and improve urban sanitation.
+
+### 🖼️ Dashboard Preview
+![Dashboard](homepage-smart-waste.png)
 
 ## **Features**
 - Real-time monitoring of smart bins' status
@@ -45,29 +44,36 @@ A Django-based web application for monitoring and managing smart waste bins. The
 ### **Installation**
 
 1. Clone the repository:
- ```bash git clone https://github.com/BrightoKusi/smart_waste_platform.git cd smart_waste_platform```
+ ```bash 
+ git clone https://github.com/BrightoKusi/smart_waste_platform.git 
+ cd smart_waste_platform```
 
 2. Create and activate a Python virtual environment (optional if using Docker):
-```bash python -m venv venv source venv/bin/activate ``` 
+```bash 
+python -m venv venv source venv/bin/activate ``` 
 
 3. Inastall dependencies:
-```bash pip install -r requirements.txt ```
+```bash 
+pip install -r requirements.txt ```
 
 4. Configure environment variables (e.g., database credentials) in .env or Docker Compose files.
 
 ## Running with Docker Compose
-```bash docker-compose up --build ```
+```bash 
+docker-compose up --build ```
 - This will start your Django app, PostgreSQL database, and any other services defined.
 - Access the app at http://localhost:8000/
 
 ### Database Setup
 If running for the first time, run migrations:
 
-```bash docker-compose exec django python manage.py migrate ```
+```bash 
+docker-compose exec django python manage.py migrate ```
 
 Create a superuser for admin access:
 
-```bash docker-compose exec django python manage.py createsuperuser ```
+```bash 
+docker-compose exec django python manage.py createsuperuser ```
 
 ## Usage ##
 - Navigate to http://localhost:8000/ to access the dashboard.
