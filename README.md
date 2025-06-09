@@ -3,7 +3,10 @@
 A Django-based web application for monitoring and managing smart waste bins. The platform collects, processes, and displays data related to waste bin status, alerts, and sensor information to optimize waste collection and improve urban sanitation.
 
 ### 🖼️ Dashboard Preview
-![Dashboard](homepage-smart-waste.png)
+![Dashboard](images/homepage-smart-waste.png)
+
+### 🖼️ API call Preview
+![Dashboard](images\localhost-8000-api-bin-status.png)
 
 ## **Features**
 - Real-time monitoring of smart bins' status
