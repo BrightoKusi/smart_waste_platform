@@ -3,6 +3,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import BinStatus, BinAlerts
 from .serializers import BinStatusSerializer, BinAlertsSerializer
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 
 class BinStatusViewSet(viewsets.ModelViewSet):
@@ -23,6 +24,7 @@ class BinAlertsViewSet(viewsets.ModelViewSet):
 
 
 
+@login_required
 def dashboard(request):
     bins = BinStatus.objects.order_by('-timestamp')[:5]
     alerts = BinAlerts.objects.order_by('-timestamp')[:5]
@@ -33,10 +35,13 @@ def dashboard(request):
         'total_bins': total_bins,
     })
 
+@login_required
 def bin_list(request):
     bins = BinStatus.objects.order_by('-timestamp')[:100]
     return render(request, 'bins/bin_list.html', {'bins': bins})
 
+
+@login_required
 def bin_detail(request, bin_id):
     bin_statuses = BinStatus.objects.filter(bin_id=bin_id).order_by('-timestamp')[:50]
     alerts = BinAlerts.objects.filter(bin_id=bin_id).order_by('-timestamp')
