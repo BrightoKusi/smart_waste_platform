@@ -40,6 +40,7 @@ A Django-based web application for monitoring and managing smart waste bins. The
 - Git installed
 
 - Basic knowledge of Django and Docker
+  
 
 ### **Installation**
 
@@ -54,7 +55,7 @@ A Django-based web application for monitoring and managing smart waste bins. The
 python -m venv venv source venv/bin/activate 
 ``` 
 
-3. Inastall dependencies:
+3. Install dependencies:
 ```bash 
 pip install -r requirements.txt 
 ```
@@ -67,6 +68,7 @@ docker-compose up --build
 ```
 - This will start your Django app, PostgreSQL database, and any other services defined.
 - Access the app at http://localhost:8000/
+
 
 ### Database Setup
 If running for the first time, run migrations:
@@ -81,10 +83,12 @@ Create a superuser for admin access:
 docker-compose exec django python manage.py createsuperuser 
 ```
 
+
 ## Usage ##
 - Navigate to http://localhost:8000/ to access the dashboard.
 - Login with your superuser credentials.
 - View smart bin statuses, alerts, and manage data.
+  
 
 ## Project Structure ##
 - /smart_waste_platform - main project settings and configurations
