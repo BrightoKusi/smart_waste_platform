@@ -105,7 +105,7 @@ docker-compose exec django python manage.py createsuperuser
 - requirements.txt - Python dependencies
 
 ### 🖼️ API call Preview
-![API-call](images\localhost-8000-api-bin-status.png)
+![API-call](images/localhost-8000-api-bin-status.png)
 
 
 ## License
