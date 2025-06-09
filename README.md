@@ -5,8 +5,6 @@ A Django-based web application for monitoring and managing smart waste bins. The
 ### 🖼️ Dashboard Preview
 ![Dashboard](images/homepage-smart-waste.png)
 
-### 🖼️ API call Preview
-![Dashboard](images\localhost-8000-api-bin-status.png)
 
 ## **Features**
 - Real-time monitoring of smart bins' status
@@ -105,6 +103,10 @@ docker-compose exec django python manage.py createsuperuser
 - docker-compose.yml - Docker service definitions
 
 - requirements.txt - Python dependencies
+
+### 🖼️ API call Preview
+![API-call](images\localhost-8000-api-bin-status.png)
+
 
 ## License
 This project is licensed under the MIT License.
