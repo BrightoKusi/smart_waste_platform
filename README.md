@@ -46,21 +46,25 @@ A Django-based web application for monitoring and managing smart waste bins. The
 1. Clone the repository:
  ```bash 
  git clone https://github.com/BrightoKusi/smart_waste_platform.git 
- cd smart_waste_platform```
+ cd smart_waste_platform
+ ```
 
 2. Create and activate a Python virtual environment (optional if using Docker):
 ```bash 
-python -m venv venv source venv/bin/activate ``` 
+python -m venv venv source venv/bin/activate 
+``` 
 
 3. Inastall dependencies:
 ```bash 
-pip install -r requirements.txt ```
+pip install -r requirements.txt 
+```
 
 4. Configure environment variables (e.g., database credentials) in .env or Docker Compose files.
 
 ## Running with Docker Compose
 ```bash 
-docker-compose up --build ```
+docker-compose up --build 
+```
 - This will start your Django app, PostgreSQL database, and any other services defined.
 - Access the app at http://localhost:8000/
 
@@ -68,12 +72,14 @@ docker-compose up --build ```
 If running for the first time, run migrations:
 
 ```bash 
-docker-compose exec django python manage.py migrate ```
+docker-compose exec django python manage.py migrate 
+```
 
 Create a superuser for admin access:
 
 ```bash 
-docker-compose exec django python manage.py createsuperuser ```
+docker-compose exec django python manage.py createsuperuser 
+```
 
 ## Usage ##
 - Navigate to http://localhost:8000/ to access the dashboard.
